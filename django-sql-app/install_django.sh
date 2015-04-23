@@ -38,6 +38,11 @@ def about(request):
    	html = "<html><body>Hello World!</body><html>"
     return HttpResponse(html)
 
+def home2(request):
+    assert isinstance(request, HttpRequest)
+    html = "<html><body>Hello World!</body><html>"
+    return HttpResponse(html)
+
 def home(request):
     html = "<html><body>Hello World!</body><html>"
     return HttpResponse(html)""" | sudo tee /var/www/helloworld/helloworld/views.py
