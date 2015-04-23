@@ -19,10 +19,11 @@ cd /var/www
 sudo django-admin startproject helloworld
 
 # Create a new file named views.py in the /var/www/helloworld/helloworld directory. This will contain the view
+
 # that renders the "hello world" page
 echo 'from django.http import HttpResponse
 def home(request):
-    html = "<html><body>Hsello World!</body><html>"
+    html = "<html><body>Hsellsadasdo World!</body><html>"
     return HttpResponse(html)' | sudo tee /var/www/helloworld/helloworld/views.py
 # Update urls.py
 echo "from django.conf.urls import patterns, url
