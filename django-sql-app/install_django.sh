@@ -19,7 +19,7 @@ sudo django-admin startproject helloworld
 # that renders the "hello world" page
 echo 'from django.http import HttpResponse
 def home(request):
-    html = "<html><body>Hello World!</body><html>"
+    html = "<html><body>Hsello World!</body><html>"
     return HttpResponse(html)' | sudo tee /var/www/helloworld/helloworld/views.py
 # Update urls.py
 echo "from django.conf.urls import patterns, url
