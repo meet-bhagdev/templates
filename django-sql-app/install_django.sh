@@ -1,11 +1,9 @@
 #!/bin/bash
 export DEBIAN_FRONTEND=noninteractive
 sudo apt-get -y update
-sudo pip install pymssql
+
 # install Python
 sudo apt-get -y install python-setuptools
-sudo apt-get -y install freetds-dev freetds-bin
-sudo apt-get -y install python-dev python-pip
 
 # install DJango
 sudo easy_install django
@@ -19,45 +17,15 @@ sudo django-admin startproject helloworld
 
 # Create a new file named views.py in the /var/www/helloworld/helloworld directory. This will contain the view
 # that renders the "hello world" page
-echo """from django.http import HttpResponse
-from django.shortcuts import render
-from django.http import HttpRequest
-from django.template import RequestContext
-from datetime import datetime
-import pymssql
-      
-def contact(request):
-    assert isinstance(request, HttpRequest)
-    html = "<html><body>Hello Wdsdforld!</body><html>"
-    return HttpResponse(html)
-
-def about(request):
-    assert isinstance(request, HttpRequest)
-   	html = "<html><body>Hello Wosdarld!</body><html>"
-    return HttpResponse(html)
-
-def home2(request):
-    assert isinstance(request, HttpRequest)
-    html = "<html><body>Hello sadWorld!</body><html>"
-    return HttpResponse(html)
-
+echo 'from django.http import HttpResponse
 def home(request):
-    html = "<html><body>Hello adsWorld!</body><html>"
-    return HttpResponse(html)""" | sudo tee /var/www/helloworld/helloworld/views.py
-
-
-
-echo """from django.conf.urls import patterns, url
-from datetime import datetime
+    html = "<html><body>Hello World!</body><html>"
+    return HttpResponse(html)' | sudo tee /var/www/helloworld/helloworld/views.py
+# Update urls.py
+echo "from django.conf.urls import patterns, url
 urlpatterns = patterns('',
-    # Examples:
     url(r'^$', 'helloworld.views.home', name='home'),
-    url(r'^home2', 'helloworld.views.home2', name='home2'),
-    url(r'^home', 'helloworld.views.home', name='home'),
-
-    url(r'^contact$', 'helloworld.views.contact', name='contact'),
-    url(r'^about', 'helloworld.views.about', name='about'),
-)""" | sudo tee /var/www/helloworld/helloworld/urls.py
+)" | sudo tee /var/www/helloworld/helloworld/urls.py
 
 # Setup Apache
 echo "<VirtualHost *:80>
