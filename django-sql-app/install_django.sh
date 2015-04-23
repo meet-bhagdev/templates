@@ -27,22 +27,6 @@ from django.http import HttpRequest
 from django.template import RequestContext
 from datetime import datetime
 import pymssql
-def home2(request):
-    conn = pymssql.connect(server='fejcz4m54q.database.windows.net',user='meet_bhagdev@fejcz4m54q', password='*********', database='meet_bhagdev')
-    cursor = conn.cursor()
-    query = str("""UPDATE votes SET value = value + 1 WHERE name = '""")+ str(request.POST['group1']) + str("""' """)
-    print query
-    cursor.execute(query)
-    conn.commit()
-    cursor.execute('SELECT * FROM votes')
-    result = ""
-    row = cursor.fetchone()
-    while row:
-        result += str(row[0]) + str(" : ") + str(row[1]) + str(" votes")
-        result += str("\n")
-        row = cursor.fetchone()
-    print result
-    print request.POST['group1']
       
 def contact(request):
     assert isinstance(request, HttpRequest)
@@ -60,17 +44,17 @@ def home(request):
 
 
 
-echo "from django.conf.urls import patterns, url
+echo """from django.conf.urls import patterns, url
 from datetime import datetime
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', 'votes.views.home', name='home'),
-    url(r'^home2', 'votes.views.home2', name='home2'),
-    url(r'^home', 'votes.views.home', name='home'),
+    url(r'^$', 'helloworld.views.home', name='home'),
+    url(r'^home2', 'helloworld.views.home2', name='home2'),
+    url(r'^home', 'helloworld.views.home', name='home'),
 
-    url(r'^contact$', 'votes.views.contact', name='contact'),
-    url(r'^about', 'votes.views.about', name='about'),
-)" | sudo tee /var/www/helloworld/helloworld/urls.py
+    url(r'^contact$', 'helloworld.views.contact', name='contact'),
+    url(r'^about', 'helloworld.views.about', name='about'),
+)""" | sudo tee /var/www/helloworld/helloworld/urls.py
 
 # Setup Apache
 echo "<VirtualHost *:80>
