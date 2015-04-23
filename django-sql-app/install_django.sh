@@ -8,6 +8,10 @@ sudo apt-get -y install python-setuptools
 # install DJango
 sudo easy_install django
 
+sudo apt-get -y install freetds-dev freetds-bin
+sudo apt-get -y install python-dev python-pip
+sudo pip install pymssql
+
 # install Apache
 sudo apt-get -y install apache2 libapache2-mod-wsgi
 
