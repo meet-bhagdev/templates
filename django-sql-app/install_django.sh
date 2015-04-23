@@ -1,13 +1,9 @@
 #!/bin/bash
 export DEBIAN_FRONTEND=noninteractive
 sudo apt-get -y update
-sudo pip install pymssql
+
 # install Python
 sudo apt-get -y install python-setuptools
-sudo apt-get -y update  
-sudo apt-get -y install freetds-dev freetds-bin
-sudo apt-get -y install python-dev python-pip
-sudo pip install pymssql
 
 # install DJango
 sudo easy_install django
@@ -15,10 +11,7 @@ sudo easy_install django
 # install Apache
 sudo apt-get -y install apache2 libapache2-mod-wsgi
 
-
-
-
-
+# create a django app
 cd /var/www
 sudo django-admin startproject helloworld
 
