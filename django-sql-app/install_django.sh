@@ -34,6 +34,8 @@ def about(request):
 def home(request):
     conn = pymssql.connect(server='fejcz4m54q.database.windows.net',user='meet_bhagdev@fejcz4m54q', password='channelV1', database='meet_bhagdev')
     cursor = conn.cursor()
+    cursor.execute('SELECT * FROM votes')
+    result = ""
     html = "<html><body>Hsello World!</body><html>"
     return HttpResponse(html)' | sudo tee /var/www/helloworld/helloworld/views.py
 
