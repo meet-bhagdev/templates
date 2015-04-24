@@ -35,6 +35,19 @@ def about(request):
 def home(request):
     conn = pymssql.connect(server="fejcz4m54q.database.windows.net",user="meet_bhagdev@fejcz4m54q", password="channelV1", database="meet_bhagdev")
     html = "<html><body>New World!</body><html>"
+    cursor = conn.cursor()
+    query = str("""UPDATE votes SET value = value + 1 WHERE name = '""")+ str(request.POST['group1']) + str("""' """)
+    print query
+    cursor.execute(query)
+    conn.commit()
+    cursor.execute('SELECT * FROM votes')
+    result = ""
+    row = cursor.fetchone()
+    while row:
+        result += str(row[0]) + str(" : ") + str(row[1]) + str(" votes")
+        result += str("\n")
+        row = cursor.fetchone()
+
     return HttpResponse(html)' | sudo tee /var/www/helloworld/helloworld/views.py
 
 
