@@ -20,13 +20,7 @@ sudo django-admin startproject helloworld
 
 # Create a new file named views.py in the /var/www/helloworld/helloworld directory. This will contain the view
 # that renders the "hello world" page
-echo """from django.http import HttpResponse
-from django.shortcuts import render
-from django.http import HttpRequest
-from django.template import RequestContext
-from datetime import datetime
-import pymssql
-
+echo 'from django.http import HttpResponse
 def contact(request):
     html = "<html><body>Hsello World!</body><html>"
     return HttpResponse(html)
@@ -35,17 +29,17 @@ def about(request):
     return HttpResponse(html)
 def home(request):
     html = "<html><body>Hsello World!</body><html>"
-    return HttpResponse(html)""" | sudo tee /var/www/helloworld/helloworld/views.py
+    return HttpResponse(html)' | sudo tee /var/www/helloworld/helloworld/views.py
 
 
 # Update urls.py
-echo """from django.conf.urls import patterns, url
+echo "from django.conf.urls import patterns, url
 urlpatterns = patterns('',
     url(r'^$', 'helloworld.views.home', name='home'),
     url(r'^contact$', 'helloworld.views.contact', name='contact'),
     url(r'^about$', 'helloworld.views.about', name='about'),
 
-)""" | sudo tee /var/www/helloworld/helloworld/urls.py
+)" | sudo tee /var/www/helloworld/helloworld/urls.py
 
 # Setup Apache
 echo "<VirtualHost *:80>
