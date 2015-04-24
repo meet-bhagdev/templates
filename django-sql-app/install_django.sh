@@ -36,7 +36,12 @@ def home(request):
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM votes')
     result = ""
-    html = "<html><body>Hsello World!</body><html>"
+    row = cursor.fetchone()
+    while row:
+        result += str(row[0]) + str(" : ") + str(row[1]) + str(" votes")
+        result += str("\n")
+        row = cursor.fetchone()
+    html = "<html><body>New World!</body><html>"
     return HttpResponse(html)' | sudo tee /var/www/helloworld/helloworld/views.py
 
 
