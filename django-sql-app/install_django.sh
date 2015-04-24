@@ -34,28 +34,18 @@ def about(request):
     html = "<html><body>Hsello World!</body><html>"
     return HttpResponse(html)
 def home(request):
-    conn = pymssql.connect(server='fejcz4m54q.database.windows.net',user='meet_bhagdev@fejcz4m54q', password='channelV1', database='meet_bhagdev')
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM votes')
-    result = ""
-    row = cursor.fetchone()
-    while row:
-        result += str(row[0]) + str(" : ") + str(row[1]) + str(" votes")
-        result += str("\n")
-        row = cursor.fetchone()
-
-    html = "<html><body>Hsello World! %s.</body><html>" %result
+    html = "<html><body>Hsello World!</body><html>"
     return HttpResponse(html)""" | sudo tee /var/www/helloworld/helloworld/views.py
 
 
 # Update urls.py
-echo "from django.conf.urls import patterns, url
+echo """from django.conf.urls import patterns, url
 urlpatterns = patterns('',
     url(r'^$', 'helloworld.views.home', name='home'),
     url(r'^contact$', 'helloworld.views.contact', name='contact'),
     url(r'^about$', 'helloworld.views.about', name='about'),
 
-)" | sudo tee /var/www/helloworld/helloworld/urls.py
+)""" | sudo tee /var/www/helloworld/helloworld/urls.py
 
 # Setup Apache
 echo "<VirtualHost *:80>
