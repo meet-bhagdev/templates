@@ -20,7 +20,7 @@ sudo django-admin startproject helloworld
 
 # Create a new file named views.py in the /var/www/helloworld/helloworld directory. This will contain the view
 # that renders the "hello world" page
-echo 'from django.http import HttpResponse
+echo """from django.http import HttpResponse
 from django.shortcuts import render
 from django.http import HttpRequest
 from django.template import RequestContext
@@ -45,7 +45,7 @@ def home(request):
         row = cursor.fetchone()
 
     html = "<html><body>Hsello World! %s.</body><html>" %result
-    return HttpResponse(html)' | sudo tee /var/www/helloworld/helloworld/views.py
+    return HttpResponse(html)""" | sudo tee /var/www/helloworld/helloworld/views.py
 
 
 # Update urls.py
