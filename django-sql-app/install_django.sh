@@ -21,6 +21,12 @@ sudo django-admin startproject helloworld
 # Create a new file named views.py in the /var/www/helloworld/helloworld directory. This will contain the view
 # that renders the "hello world" page
 echo 'from django.http import HttpResponse
+from django.shortcuts import render
+from django.http import HttpRequest
+from django.template import RequestContext
+from datetime import datetime
+import pymssql
+
 def contact(request):
     html = "<html><body>Hsello World!</body><html>"
     return HttpResponse(html)
