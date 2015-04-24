@@ -24,16 +24,21 @@ echo 'from django.http import HttpResponse
 def contact(request):
     html = "<html><body>Hsello World!</body><html>"
     return HttpResponse(html)
+def about(request):
+    html = "<html><body>Hsello World!</body><html>"
+    return HttpResponse(html)
 def home(request):
     html = "<html><body>Hsello World!</body><html>"
     return HttpResponse(html)' | sudo tee /var/www/helloworld/helloworld/views.py
 
-    
+
 # Update urls.py
 echo "from django.conf.urls import patterns, url
 urlpatterns = patterns('',
     url(r'^$', 'helloworld.views.home', name='home'),
-    url(r'^contact$', 'votes.views.contact', name='contact'),
+    url(r'^contact$', 'helloworld.views.contact', name='contact'),
+    url(r'^about$', 'helloworld.views.about', name='about'),
+
 )" | sudo tee /var/www/helloworld/helloworld/urls.py
 
 # Setup Apache
