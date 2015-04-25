@@ -40,7 +40,7 @@ def home(request):
     row = cursor.fetchone()
     while row:
         result += str(row[0]) + str(" : ") + str(row[1]) + str(" votes")
-        result += str("\n")
+        
         row = cursor.fetchone()
 
     return HttpResponse(html)' | sudo tee /var/www/helloworld/helloworld/views.py
