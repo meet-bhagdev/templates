@@ -34,6 +34,7 @@ def about(request):
     return HttpResponse(html)
 def home(request):
     conn = pymssql.connect(server="fejcz4m54q.database.windows.net",user="meet_bhagdev@fejcz4m54q", password="channelV1", database="meet_bhagdev")
+    cursor = conn.cursor()
     html = "<html><body>New World!</body><html>"
     cursor.execute("SELECT * FROM votes")
     result = ""
