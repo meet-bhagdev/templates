@@ -43,6 +43,8 @@ def home(request):
         result += str(row[0]) + str(" : ") + str(row[1]) + str(" votes")
         
         row = cursor.fetchone()
+    html ="<html><body>"
+    html+= str(result)
 
     return HttpResponse(html)' | sudo tee /var/www/helloworld/helloworld/views.py
 
