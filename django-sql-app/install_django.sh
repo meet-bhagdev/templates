@@ -37,7 +37,7 @@ def home(request):
     cursor = conn.cursor()
     html = '<html><body>New World!</body><html>'
     cursor.execute('SELECT c.CustomerID, c.CompanyName,COUNT(soh.SalesOrderID) AS OrderCount FROM SalesLT.Customer AS c LEFT OUTER JOIN SalesLT.SalesOrderHeader AS soh ON c.CustomerID = soh.CustomerID GROUP BY c.CustomerID, c.CompanyName ORDER BY OrderCount DESC;')
-    result = ""
+    result = ''
     row = cursor.fetchone()
     result = '$1'
     while row:
