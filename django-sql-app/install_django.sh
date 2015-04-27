@@ -20,23 +20,23 @@ sudo django-admin startproject helloworld
 
 # Create a new file named views.py in the /var/www/helloworld/helloworld directory. This will contain the view
 # that renders the "hello world" page
-echo 'from django.http import HttpResponse
+echo "from django.http import HttpResponse
 from django.shortcuts import render
 from django.http import HttpRequest
 from django.template import RequestContext
 from datetime import datetime
 import pymssql
 def contact(request):
-    html = "<html><body>Hsello World!</body><html>"
+    html = '<html><body>Hsello World!</body><html>'
     return HttpResponse(html)
 def about(request):
-    html = "<html><body>Hsello World!</body><html>"
+    html = '<html><body>Hsello World!</body><html>'
     return HttpResponse(html)
 def home(request):
-    conn = pymssql.connect(server="csucla2015.database.windows.net",user="meet_bhagdev@csucla2015", password="channelV1", database="AdventureWorks")
+    conn = pymssql.connect(server='csucla2015.database.windows.net',user='meet_bhagdev@csucla2015', password='channelV1', database='AdventureWorks')
     cursor = conn.cursor()
-    html = "<html><body>New World!</body><html>"
-    cursor.execute("SELECT c.CustomerID, c.CompanyName,COUNT(soh.SalesOrderID) AS OrderCount FROM SalesLT.Customer AS c LEFT OUTER JOIN SalesLT.SalesOrderHeader AS soh ON c.CustomerID = soh.CustomerID GROUP BY c.CustomerID, c.CompanyName ORDER BY OrderCount DESC;")
+    html = '<html><body>New World!</body><html>''
+    cursor.execute('SELECT c.CustomerID, c.CompanyName,COUNT(soh.SalesOrderID) AS OrderCount FROM SalesLT.Customer AS c LEFT OUTER JOIN SalesLT.SalesOrderHeader AS soh ON c.CustomerID = soh.CustomerID GROUP BY c.CustomerID, c.CompanyName ORDER BY OrderCount DESC;')
     result = ""
     row = cursor.fetchone()
     result = $1
@@ -44,10 +44,10 @@ def home(request):
         result += str(row)
         
         row = cursor.fetchone()
-    html ="<html><body>"
+    html ='<html><body>'
     html+= str(result)
 
-    return HttpResponse(html)' | sudo tee /var/www/helloworld/helloworld/views.py
+    return HttpResponse(html)" | sudo tee /var/www/helloworld/helloworld/views.py
 
 
 # Update urls.py
