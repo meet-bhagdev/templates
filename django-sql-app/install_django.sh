@@ -33,14 +33,15 @@ def about(request):
     html = "<html><body>Hsello World!</body><html>"
     return HttpResponse(html)
 def home(request):
-    conn = pymssql.connect(server="fejcz4m54q.database.windows.net",user="meet_bhagdev@fejcz4m54q", password="channelV1", database="meet_bhagdev")
+    conn = pymssql.connect(server="csucla2015.database.windows.net",user="meet_bhagdev@csucla2015", password="channelV1", database="AdventureWorks")
     cursor = conn.cursor()
     html = "<html><body>New World!</body><html>"
-    cursor.execute("SELECT * FROM votes")
+    cursor.execute("SELECT c.CustomerID, c.CompanyName,COUNT(soh.SalesOrderID) AS OrderCount FROM SalesLT.Customer AS c LEFT OUTER JOIN SalesLT.SalesOrderHeader AS soh ON c.CustomerID = soh.CustomerID GROUP BY c.CustomerID, c.CompanyName ORDER BY OrderCount DESC;")
     result = ""
     row = cursor.fetchone()
+    result= "$vmDnsName"
     while row:
-        result += str(row[0]) + str(" : ") + str(row[1]) + str(" votes")
+        result += str(row)
         
         row = cursor.fetchone()
     html ="<html><body>"
