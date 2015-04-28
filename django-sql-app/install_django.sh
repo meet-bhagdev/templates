@@ -40,9 +40,9 @@ def home(request):
 
     cursor.executemany(
         \"INSERT INTO votes VALUES (%s, %d)\",
-        [('NodeJS', '0'),
-         ('Python', '0'),
-         ('C#', '0')])
+        [('NodeJS', '2'),
+         ('Python', '33'),
+         ('C#', '2')])
 
     # you must call commit() to persist your data if you don't set autocommit to True
     conn.commit()
@@ -53,10 +53,10 @@ def home(request):
     row = cursor.fetchone()
     result = '$2'
     while row:
-        result += str(row)
+        result += str(row[0]) + str(' : ') + str(row[1]) + str('votes')
         
         row = cursor.fetchone()
-    html ='<html><body>'
+    html ='<html><body><h2><pre>'
     html+= str(result)
 
     return HttpResponse(html)" | sudo tee /var/www/helloworld/helloworld/views.py
