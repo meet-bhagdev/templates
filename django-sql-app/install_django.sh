@@ -35,16 +35,7 @@ def about(request):
 def home(request):
     conn = pymssql.connect(server='$2.database.windows.net',user='$3@$2', password='$4', database='$5')
     cursor = conn.cursor()
-    cursor = conn.cursor()
-    cursor.execute(\"
-    IF OBJECT_ID('votes', 'U') IS NOT NULL
-        DROP TABLE votes
-    CREATE TABLE votes (
-        name VARCHAR(100),
-        value INT NOT NULL,
-        PRIMARY KEY(name)
-    )
-    \")
+    cursor.execute(\" IF OBJECT_ID('votes', 'U') IS NOT NULL DROP TABLE votes CREATE TABLE votes ( name VARCHAR(100), value INT NOT NULL, PRIMARY KEY(name) \")
     cursor.executemany(
         \"INSERT INTO votes VALUES (%s, %d)\",
         [('NodeJS', '0'),
