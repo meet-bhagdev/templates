@@ -1,19 +1,15 @@
 #!/bin/bash
 export DEBIAN_FRONTEND=noninteractive
 sudo apt-get -y update
-
 # install Python
 sudo apt-get -y install python-setuptools
-
 # install DJango
 sudo easy_install django
-
 sudo apt-get -y install freetds-dev freetds-bin
 sudo apt-get -y install python-dev python-pip
 sudo pip install pymssql
 # install Apache
 sudo apt-get -y install apache2 libapache2-mod-wsgi
-
 # create a django app
 cd /var/www
 sudo django-admin startproject helloworld
@@ -32,6 +28,23 @@ def contact(request):
 def about(request):
     html = '<html><body>Hsello World!</body><html>'
     return HttpResponse(html)
+def home2(request):
+    conn = pymssql.connect(server='$2.database.windows.net',user='$3@$2', password='$4', database='$5')
+    cursor = conn.cursor()
+    query = str(\"UPDATE votes SET value = value + 1 WHERE name = '\")+ str(request.POST['group1']) + str(\"'\")
+    cursor.execute(query)
+    conn.commit()
+    cursor.execute('SELECT * FROM votes')
+    result = ''
+    row = cursor.fetchone()
+    while row:
+        result += str(row[0]) + str(' : ') + str(row[1]) + str(' votes')
+        row = cursor.fetchone()
+    html ='<html><body><h2><pre>'
+    html+= str(result)
+
+    return HttpResponse(html)
+
 def home(request):
     conn = pymssql.connect(server='$2.database.windows.net',user='$3@$2', password='$4', database='$5')
     cursor = conn.cursor()
@@ -51,14 +64,10 @@ def home(request):
     cursor.execute('SELECT * FROM votes')
     result = ''
     row = cursor.fetchone()
-    result = '$2'
     while row:
-        result += str(row[0]) + str(' : ') + str(row[1]) + str('votes')
-        
+        result += str(row[0]) + str(' : ') + str(row[1]) + str('votes')      
         row = cursor.fetchone()
-    html ='<html><body><h2><pre>'
-    html+= str(result)
-
+    html =\"<h1> What is your favorite programming language </h1> <form method = 'POST' action='/home2/'> {% csrf_token %} <input type = 'radio' = name = 'group1' value = 'NodeJS'> NodeJS<br> <input type = 'radio' = name = 'group1' value = 'Python'> Python<br> <input type = 'radio' = name = 'group1' value = 'C#'> C#<br> <input type = 'submit' value = 'Submit' class = 'btn'/> \"
     return HttpResponse(html)" | sudo tee /var/www/helloworld/helloworld/views.py
 
 
