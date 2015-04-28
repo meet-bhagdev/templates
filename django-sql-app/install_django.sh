@@ -74,10 +74,10 @@ def home(request):
 # Update urls.py
 echo "from django.conf.urls import patterns, url
 urlpatterns = patterns('',
-    url(r'^$', 'helloworld.views.home', name='home'),
+    url(r'^$', 'hell oworld.views.home', name='home'),
     url(r'^contact$', 'helloworld.views.contact', name='contact'),
     url(r'^about$', 'helloworld.views.about', name='about'),
-    url(r'^home2$', 'helloworld.views.home2', name='home2'),
+    url(r'^home2', 'helloworld.views.home2', name='home2'),
 
 )" | sudo tee /var/www/helloworld/helloworld/urls.py
 
