@@ -19,7 +19,9 @@ sudo django-admin startproject helloworld
 echo "from django.http import HttpResponse
 from django.shortcuts import render
 from django.http import HttpRequest
+from django.core.context_processors import csrf
 from django.template import RequestContext
+
 from datetime import datetime
 import pymssql
 def contact(request):
@@ -36,6 +38,7 @@ def home2(request):
     conn.commit()
     cursor.execute('SELECT * FROM votes')
     result = ''
+
     row = cursor.fetchone()
     while row:
         result += str(row[0]) + str(' : ') + str(row[1]) + str(' votes')
@@ -67,7 +70,9 @@ def home(request):
     while row:
         result += str(row[0]) + str(' : ') + str(row[1]) + str('votes')      
         row = cursor.fetchone()
-    html =\"<h1> What is your favorite programming language </h1> <form method = 'POST' action='/home2/'> {% csrf_token %} <input type = 'radio' = name = 'group1' value = 'NodeJS'> NodeJS<br> <input type = 'radio' = name = 'group1' value = 'Python'> Python<br> <input type = 'radio' = name = 'group1' value = 'C#'> C#<br> <input type = 'submit' value = 'Submit' class = 'btn'/> \"
+    html =\"<h1> What is your favorite programming language </h1> <form method = 'POST' action='/home2/'>\"
+    html += str('django.middleware.csrf.get_token(request)')
+    html += str(\"<input type = 'radio' = name = 'group1' value = 'NodeJS'> NodeJS<br> <input type = 'radio' = name = 'group1' value = 'Python'> Python<br> <input type = 'radio' = name = 'group1' value = 'C#'> C#<br> <input type = 'submit' value = 'Submit' class = 'btn'/> \")
     return HttpResponse(html)" | sudo tee /var/www/helloworld/helloworld/views.py
 
 
