@@ -33,10 +33,29 @@ def about(request):
     html = '<html><body>Hsello World!</body><html>'
     return HttpResponse(html)
 def home(request):
-    conn = pymssql.connect(server='csucla2015.database.windows.net',user='meet_bhagdev@csucla2015', password='channelV1', database='AdventureWorks')
+    conn = pymssql.connect(server='$2.database.windows.net',user='$3@$2', password='$4', database='$5')
     cursor = conn.cursor()
+    cursor = conn.cursor()
+    cursor.execute(\"
+    IF OBJECT_ID('votes', 'U') IS NOT NULL
+        DROP TABLE votes
+    CREATE TABLE votes (
+        name VARCHAR(100),
+        value INT NOT NULL,
+        PRIMARY KEY(name)
+    )
+    \")
+    cursor.executemany(
+        \"INSERT INTO votes VALUES (%s, %d)\",
+        [('NodeJS', '0'),
+         ('Python', '0'),
+         ('C#', '0')])
+
+    # you must call commit() to persist your data if you don't set autocommit to True
+    conn.commit()
+
     html = '<html><body>New World!</body><html>'
-    cursor.execute('SELECT c.CustomerID, c.CompanyName,COUNT(soh.SalesOrderID) AS OrderCount FROM SalesLT.Customer AS c LEFT OUTER JOIN SalesLT.SalesOrderHeader AS soh ON c.CustomerID = soh.CustomerID GROUP BY c.CustomerID, c.CompanyName ORDER BY OrderCount DESC;')
+    cursor.execute('SELECT * FROM votes')
     result = ''
     row = cursor.fetchone()
     result = '$2'
