@@ -33,7 +33,7 @@ def about(request):
     html = '<html><body>Hsello World!</body><html>'
     return HttpResponse(html)
 def home(request):
-    conn = pymssql.connect(server='$2.database.windows.net',user='$3@$2', password='$4', database='$5')
+    conn = pymssql.connect(server='csucla2016.database.windows.net',user='meet_bhagdev@csucla2016', password='channelV1', database='cusclas2016')
     cursor = conn.cursor()
     cursor.execute(\"IF OBJECT_ID('votes', 'U') IS NOT NULL DROP TABLE votes\")
     cursor.execute(\"CREATE TABLE votes ( name VARCHAR(100), value INT NOT NULL, PRIMARY KEY(name))\")
