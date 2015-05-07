@@ -48,7 +48,7 @@ def home(request):
     cursor.execute('SELECT * FROM votes')
     result = ''
     row = cursor.fetchone()
-    
+    result = '$2'
     while row:
         result += str(row[0]) + str(' : ') + str(row[1]) + str('votes')
         
