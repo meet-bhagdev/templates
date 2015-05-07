@@ -33,28 +33,7 @@ def about(request):
     html = '<html><body>Hsello World!</body><html>'
     return HttpResponse(html)
 def home(request):
-    conn = pymssql.connect(server='$2.database.windows.net',user='$3@$2', password='$4', database='$5')
-    cursor = conn.cursor()
-    cursor.execute(\"IF OBJECT_ID('votes', 'U') IS NOT NULL DROP TABLE votes\")
-    cursor.execute(\"CREATE TABLE votes ( name VARCHAR(100), value INT NOT NULL, PRIMARY KEY(name))\")
-    cursor.executemany(
-        \"INSERT INTO votes VALUES (%s, %d)\",
-        [('NodeJS', '2'),
-         ('Python', '33'),
-         ('C#', '2')])
-    # you must call commit() to persist your data if you don't set autocommit to True
-    conn.commit()
-    html = '<html><body>New World!</body><html>'
-    cursor.execute('SELECT * FROM votes')
-    result = ''
-    row = cursor.fetchone()
-    result = '$2'
-    while row:
-        result += str(row[0]) + str(' : ') + str(row[1]) + str('votes')
-        
-        row = cursor.fetchone()
-    html ='<html><body><h2><pre>'
-    html+= str(result)
+    html = '<html><body>Hsello World!</body><html>'
     return HttpResponse(html)" | sudo tee /var/www/helloworld/helloworld/views.py
 
 
