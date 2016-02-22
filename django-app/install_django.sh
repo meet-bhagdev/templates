@@ -31,6 +31,10 @@ urlpatterns = patterns('',
     url(r'^$', 'helloworld.views.home', name='home'),
 )" | tee /var/www/helloworld/helloworld/urls.py
 
+cd helloworld
+python manage.py migrate
+cd ..
+
 # Setup Apache
 echo "<VirtualHost *:80>
 ServerName $1
