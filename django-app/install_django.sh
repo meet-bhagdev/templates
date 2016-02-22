@@ -18,21 +18,9 @@ cd master
 echo channelV1 | sudo cp -r Django-master /var/www
 # create a django app
 cd /var/www
-django-admin startproject helloworld
 
-# Create a new file named views.py in the /var/www/helloworld/helloworld directory. This will contain the view
-# that renders the "hello world" page
-echo 'from django.http import HttpResponse
-def home(request):
-    html = "<html><body>Hello Worlsad!</body><html>"
-    return HttpResponse(html)' | tee /var/www/helloworld/helloworld/views.py
-# Update urls.py
-echo "from django.conf.urls import patterns, url
-urlpatterns = patterns('',
-    url(r'^$', 'helloworld.views.home', name='home'),
-)" | tee /var/www/helloworld/helloworld/urls.py
 
-cd Django-master
+cd /var/www/Django-master
 python manage.py migrate
 cd ..
 
