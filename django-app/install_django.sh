@@ -12,7 +12,7 @@ easy_install django==1.8
 apt-get -y install apache2 libapache2-mod-wsgi
 
 wget https://github.com/meet-bhagdev/Django/archive/master.zip
-echo channelV1 | sudo apt-get install unzip
+apt-get install unzip
 unzip master.zip -d master
 cd master
 echo channelV1 | sudo cp -r Django-master /var/www
