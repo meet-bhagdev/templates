@@ -23,7 +23,7 @@ django-admin startproject helloworld
 # that renders the "hello world" page
 echo 'from django.http import HttpResponse
 def home(request):
-    html = "<html><body>Hello World!</body><html>"
+    html = "<html><body>Hello Worlsad!</body><html>"
     return HttpResponse(html)' | tee /var/www/helloworld/helloworld/views.py
 # Update urls.py
 echo "from django.conf.urls import patterns, url
@@ -39,7 +39,7 @@ cd ..
 echo "<VirtualHost *:80>
 ServerName $1
 </VirtualHost>
-WSGIScriptAlias / /var/www/helloworld/helloworld/wsgi.py
+WSGIScriptAlias / /var/www/Django-master/DjangoWebProject1/wsgi.py
 WSGIPythonPath /var/www/helloworld" | tee /etc/apache2/sites-available/helloworld.conf
 
 #enable site
