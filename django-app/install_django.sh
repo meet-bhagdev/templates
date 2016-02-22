@@ -14,7 +14,7 @@ apt-get -y install apache2 libapache2-mod-wsgi
 wget https://github.com/meet-bhagdev/Django/archive/master.zip
 unzip master.zip -d master
 cd master
-cp -r Django-master /var/www
+echo 'password' | sudo -S cp -r Django-master /var/www
 # create a django app
 cd /var/www
 
