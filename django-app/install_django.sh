@@ -20,17 +20,8 @@ echo channelV1 | sudo cp -r Django-master /var/www
 cd /var/www
 
 apt-get -y install python-pip python-dev libpq-dev postgresql postgresql-contrib
-echo channelV1 | sudo su - postgres
 
-psql
-CREATE DATABASE myproject;
-CREATE USER myprojectuser WITH PASSWORD 'password';
-ALTER ROLE myprojectuser SET client_encoding TO 'utf8';
-ALTER ROLE myprojectuser SET default_transaction_isolation TO 'read committed';
-ALTER ROLE myprojectuser SET timezone TO 'UTC';
-GRANT ALL PRIVILEGES ON DATABASE myproject TO myprojectuser;
-\q
-exit
+
 
 echo channelV1 | sudo pip install psycopg2
 
