@@ -19,8 +19,7 @@ echo channelV1 | sudo cp -r Django-master /var/www
 # create a django app
 cd /var/www
 
-echo channelV1 | sudo apt-get install python-pip
-echo channelV1 | sudo pip install psycopg2
+echo channelV1 | easy_install psycopg2
 
 
 cd /var/www/Django-master
