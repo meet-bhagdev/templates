@@ -6,7 +6,7 @@ apt-get -y update
 apt-get -y install python-setuptools
 
 # install DJango
-easy_install django
+easy_install django==1.8
 
 # install Apache
 apt-get -y install apache2 libapache2-mod-wsgi
@@ -18,6 +18,9 @@ cd master
 echo channelV1 | sudo cp -r Django-master /var/www
 # create a django app
 cd /var/www
+
+echo channelV1 | sudo apt-get install python-pip
+echo channelV1 | sudo pip install psycopg2
 
 
 cd /var/www/Django-master
