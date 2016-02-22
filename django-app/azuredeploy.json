@@ -202,7 +202,7 @@
         "typeHandlerVersion": "1.2",
         "settings": {
           "fileUris": [
-            "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/django-app/install_django.sh"
+            "https://raw.githubusercontent.com/meet-bhagdev/templates/master/django-app/install_django.sh"
           ],
           "commandToExecute": "[concat('sh install_django.sh ', parameters('vmDnsName'))]"
         }
