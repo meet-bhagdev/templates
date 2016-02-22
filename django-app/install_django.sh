@@ -31,7 +31,7 @@ urlpatterns = patterns('',
     url(r'^$', 'helloworld.views.home', name='home'),
 )" | tee /var/www/helloworld/helloworld/urls.py
 
-cd helloworld
+cd Django-master
 python manage.py migrate
 cd ..
 
