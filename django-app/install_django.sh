@@ -40,7 +40,7 @@ echo "<VirtualHost *:80>
 ServerName $1
 </VirtualHost>
 WSGIScriptAlias / /var/www/Django-master/DjangoWebProject1/wsgi.py
-WSGIPythonPath /var/www/helloworld" | tee /etc/apache2/sites-available/helloworld.conf
+WSGIPythonPath /var/www/Django-master" | tee /etc/apache2/sites-available/helloworld.conf
 
 #enable site
 a2ensite helloworld
