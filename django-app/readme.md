@@ -1,4 +1,4 @@
-# Deploy a Django app on Ubuntu.
+# Deploy a Django app with PG on Ubuntu.
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmeet-bhagdev%2Ftemplates%2Fmaster%2Fdjango-app%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 <a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fmeet-bhagdev%2Ftemplates%2Fmaster%2Fdjango-app%2Fazuredeploy.json" target="_blank">
