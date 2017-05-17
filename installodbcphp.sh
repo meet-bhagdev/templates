@@ -6,5 +6,3 @@ apt-get install -y unixodbc-dev
 pecl install sqlsrv-4.1.8preview  pdo_sqlsrv-4.1.8preview
 echo "extension= pdo_sqlsrv.so" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"`
 echo "extension= sqlsrv.so" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"`
-
-
