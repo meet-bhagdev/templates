@@ -1,4 +1,4 @@
-apt-get -y install php7.0 libapache2-mod-php7.0 mcrypt php7.0-mcrypt php-mbstring php-pear php7.0-dev apache2 gcc
+apt-get -y install php7.0 php-pear php7.0-dev gcc
 curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > /etc/apt/sources.list.d/mssql-tools.list
 apt-get update
 ACCEPT_EULA=Y apt-get install -y msodbcsql
